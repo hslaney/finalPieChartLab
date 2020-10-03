@@ -1,6 +1,6 @@
 package com.company;
 
-/**
+/*
  * A PollDisplayPanel holds the vote counts and
  * displays the numbers and the pie chart for
  * the current vote counts.
@@ -51,8 +51,8 @@ public class PollDisplayPanel extends JPanel {
         return ("Tami : " + count1 + "   ") + ("Brian : " + count2 + "   ") + ("Liz : " + count3 + "   ");
 
     }
-}
-/*
+
+
     // Redefines JPanel's paintComponent to draw this pie chart
     public void paintComponent(Graphics g)
     {
@@ -67,8 +67,8 @@ public class PollDisplayPanel extends JPanel {
         drawLegend(g, x, y, r);
     }
 
- */
-/*
+
+
     // Draws the pie chart.
     // To avoid gaps in the picture, the following algorithm is used:
     // 1. set fromDegree to 0;
@@ -90,10 +90,18 @@ public class PollDisplayPanel extends JPanel {
             g.setColor(Color.RED);
             degrees = countToDegrees(count1, total);
             drawSector(g, x, y, r, fromDegree, degrees);
+            fromDegree += degrees;
 
-            //_________________________________________________
+            g.setColor(Color.GREEN);
+            degrees = countToDegrees(count2, total);
+            drawSector(g, x, y, r,  fromDegree, degrees);
+            fromDegree += degrees;
 
-     // ...
+
+            g.setColor(Color.BLUE);
+            degrees = Math.max(360 - fromDegree, 0);
+            drawSector(g, x, y, r,  fromDegree, degrees);
+
         }
         else
         {
@@ -109,11 +117,11 @@ public class PollDisplayPanel extends JPanel {
         y += (r + 20);
         g.setColor(Color.BLACK);
 
-        g.drawString( _______________ , x - r, y);
+        g.drawString( "" + count1 , x - r, y);
 
-        g.drawString( _______________ , x, y);
+        g.drawString( "" + count2 , x, y);
 
-        g.drawString( _______________ , x + r, y);
+        g.drawString( "" + count3 , x + r, y);
 
 
         // Display the color squares:
@@ -130,10 +138,11 @@ public class PollDisplayPanel extends JPanel {
     // Returns the number of degrees in a pie slice that
     // corresponds to count / total, rounded to the nearest integer.
     private int countToDegrees(int count, int total)
-    {
+{
 
-        return _________________________________________________ ;
-    }
+
+    return (int)(Math.round(((double)count/total) * 360));
+}
 
 
     // Draws a sector, centered at x, y, of radius r,
@@ -144,7 +153,6 @@ public class PollDisplayPanel extends JPanel {
             g.fillOval(x - r, y - r, 2 * r, 2 * r);
         else
             g.fillArc(x - r, y - r, 2 * r, 2 * r, fromDegree, degrees);
+
     }
 }
-
-*/
