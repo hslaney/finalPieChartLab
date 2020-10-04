@@ -141,7 +141,7 @@ public class PollDisplayPanel extends JPanel {
 {
 
 
-    return (int)(Math.round(((double)count/total) * 360));
+    return (int)(((double)count/total) * 360);
 }
 
 
